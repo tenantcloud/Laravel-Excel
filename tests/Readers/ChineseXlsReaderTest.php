@@ -1,8 +1,8 @@
 <?php
 
 use Mockery as m;
-use Maatwebsite\Excel\Readers\LaravelExcelReader;
-use Maatwebsite\Excel\Classes;
+use TenantCloud\Excel\Readers\LaravelExcelReader;
+use TenantCloud\Excel\Classes;
 
 class ChineseXlsReaderTest extends TestCase {
 
@@ -26,7 +26,7 @@ class ChineseXlsReaderTest extends TestCase {
         parent::setUp();
 
         // Disable to ascii
-        Config::set('excel.import.to_ascii', false);
+        Config::set('old_excel.import.to_ascii', false);
 
         // Set excel class
         $this->excel    = App::make('phpexcel');
@@ -56,7 +56,7 @@ class ChineseXlsReaderTest extends TestCase {
     public function testGet()
     {
         $got = $this->loadedXls->get();
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\RowCollection::class, $got);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\RowCollection::class, $got);
         $this->assertCount(2, $got);
     }
 

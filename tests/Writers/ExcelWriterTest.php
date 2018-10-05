@@ -1,6 +1,6 @@
 <?php
 
-use Maatwebsite\Excel\Facades\Excel;
+use TenantCloud\Excel\Facades\Excel;
 
 class ExcelWriterTest extends TestCase {
 
@@ -256,7 +256,7 @@ class ExcelWriterTest extends TestCase {
     }
 
     /**
-     * @expectedException Maatwebsite\Excel\Exceptions\LaravelExcelException
+     * @expectedException TenantCloud\Excel\Exceptions\LaravelExcelException
      * @expectedExceptionMessage [ERROR] Aborting spreadsheet render: a minimum of 1 sheet is required.
      */
     public function testNoSheets()

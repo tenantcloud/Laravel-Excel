@@ -13,7 +13,7 @@ class TestConfig extends TestCase
 
     public function testCreatorConfig()
     {
-        $this->assertEquals(config('excel.creator'), 'Maatwebsite');
+        $this->assertEquals(config('old_excel.creator'), 'Maatwebsite');
     }
 
 }

@@ -7,14 +7,14 @@ class TestCase extends TestBenchTestCase
 
     public function testExcelClass()
     {
-        $excel = App::make('Maatwebsite\Excel\Excel');
-        $this->assertInstanceOf(\Maatwebsite\Excel\Excel::class, $excel);
+        $excel = App::make('TenantCloud\Excel\Excel');
+        $this->assertInstanceOf(\TenantCloud\Excel\Excel::class, $excel);
     }
 
 
     protected function getPackageProviders($app)
     {
-        return array('Maatwebsite\Excel\ExcelServiceProvider');
+        return array('TenantCloud\Excel\ExcelServiceProvider');
     }
 
 
@@ -24,7 +24,7 @@ class TestCase extends TestBenchTestCase
             __DIR__,
             '..',
             'src',
-            'Maatwebsite',
+            'TenantCloud',
             'Excel'
         ]));
     }

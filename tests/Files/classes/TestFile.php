@@ -1,6 +1,6 @@
 <?php
 
-use Maatwebsite\Excel\Files\ExcelFile;
+use TenantCloud\Excel\Files\ExcelFile;
 
 class TestFile extends ExcelFile {
 

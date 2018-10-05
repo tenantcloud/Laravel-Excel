@@ -1,8 +1,8 @@
 <?php
 
 use Mockery as m;
-use Maatwebsite\Excel\Readers\LaravelExcelReader;
-use Maatwebsite\Excel\Classes;
+use TenantCloud\Excel\Readers\LaravelExcelReader;
+use TenantCloud\Excel\Classes;
 
 class ReaderTest extends TestCase {
 

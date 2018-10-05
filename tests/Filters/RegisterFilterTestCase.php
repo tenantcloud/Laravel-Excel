@@ -12,7 +12,7 @@ class RegisterFilterTestCase extends TestCase {
 
     public function testRegisterThroughConfig()
     {
-        $registered = config('excel.filters.registered');
+        $registered = config('old_excel.filters.registered');
 
         $filters = $this->excel->getFilters('registered');
         $this->assertEquals($registered, $filters);

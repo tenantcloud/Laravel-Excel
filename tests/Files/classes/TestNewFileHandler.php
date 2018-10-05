@@ -1,6 +1,6 @@
 <?php
 
-use Maatwebsite\Excel\Files\ExportHandler;
+use TenantCloud\Excel\Files\ExportHandler;
 
 class TestNewFileHandler implements ExportHandler {
 

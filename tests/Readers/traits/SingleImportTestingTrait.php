@@ -6,7 +6,7 @@ trait SingleImportTestingTrait {
     public function testGet()
     {
         $got = $this->loadedFile->get();
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\RowCollection::class, $got);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\RowCollection::class, $got);
         $this->assertCount(5, $got);
     }
 
@@ -16,7 +16,7 @@ trait SingleImportTestingTrait {
         $columns = ['heading_one', 'heading_two'];
         $got = $this->loadedFile->get($columns);
 
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\RowCollection::class, $got);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\RowCollection::class, $got);
         $this->assertCount(5, $got);
     }
 
@@ -24,7 +24,7 @@ trait SingleImportTestingTrait {
     public function testAll()
     {
         $all = $this->loadedFile->all();
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\RowCollection::class, $all);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\RowCollection::class, $all);
         $this->assertCount(5, $all);
     }
 
@@ -32,7 +32,7 @@ trait SingleImportTestingTrait {
     public function testFirst()
     {
         $first = $this->loadedFile->first();
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\CellCollection::class, $first);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\CellCollection::class, $first);
 
         // 3 columns
         $this->assertCount(3, $first);
@@ -44,7 +44,7 @@ trait SingleImportTestingTrait {
         $columns = ['heading_one', 'heading_two'];
         $first = $this->loadedFile->first($columns);
 
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\CellCollection::class, $first);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\CellCollection::class, $first);
         $this->assertCount(count($columns), $first);
     }
 
@@ -55,7 +55,7 @@ trait SingleImportTestingTrait {
 
         $this->loadedFile->each(function($cells) use($me) {
 
-            $me->assertInstanceOf(\Maatwebsite\Excel\Collections\CellCollection::class, $cells);
+            $me->assertInstanceOf(\TenantCloud\Excel\Collections\CellCollection::class, $cells);
 
         });
     }
@@ -111,7 +111,7 @@ trait SingleImportTestingTrait {
 
     public function testImportedHeadingsHashed()
     {
-        Config::set('excel.import.heading', 'hashed');
+        Config::set('old_excel.import.heading', 'hashed');
 
         $loaded = $this->reload();
 
@@ -128,7 +128,7 @@ trait SingleImportTestingTrait {
 
     public function testImportedHeadingsNumeric()
     {
-        Config::set('excel.import.heading', 'numeric');
+        Config::set('old_excel.import.heading', 'numeric');
 
         $loaded = $this->reload();
 
@@ -145,7 +145,7 @@ trait SingleImportTestingTrait {
 
     public function testImportedHeadingsOriginal()
     {
-        Config::set('excel.import.heading', 'original');
+        Config::set('old_excel.import.heading', 'original');
 
         $loaded = $this->reload();
 
@@ -172,8 +172,8 @@ trait SingleImportTestingTrait {
 
     public function testByConfig()
     {
-        $config = $this->loadedFile->byConfig('excel.import.sheets');
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\SheetCollection::class, $config);
+        $config = $this->loadedFile->byConfig('old_excel.import.sheets');
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\SheetCollection::class, $config);
     }
 
 
@@ -181,12 +181,12 @@ trait SingleImportTestingTrait {
     {
         $me = $this;
 
-        $config = $this->loadedFile->byConfig('excel.import.sheets', function($config) use($me)
+        $config = $this->loadedFile->byConfig('old_excel.import.sheets', function($config) use($me)
         {
-            $me->assertInstanceOf(\Maatwebsite\Excel\Readers\ConfigReader::class, $config);
+            $me->assertInstanceOf(\TenantCloud\Excel\Readers\ConfigReader::class, $config);
         });
 
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\SheetCollection::class, $config);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\SheetCollection::class, $config);
     }
 
 

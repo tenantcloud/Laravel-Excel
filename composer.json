@@ -1,5 +1,5 @@
 {
-  "name": "maatwebsite/excel",
+  "name": "tenantcloud/excel",
   "description": "Supercharged Excel exports in Laravel",
   "license": "MIT",
   "keywords": [
@@ -42,25 +42,15 @@
   },
   "autoload": {
     "classmap": [
-      "src/Maatwebsite/Excel"
+      "src/TenantCloud/Excel"
     ],
     "psr-0": {
-      "Maatwebsite\\Excel\\": "src/"
+      "TenantCloud\\Excel\\": "src/"
     }
   },
   "autoload-dev": {
     "classmap": [
       "tests/TestCase.php"
     ]
-  },
-  "extra": {
-        "laravel": {
-            "providers": [
-                "Maatwebsite\\Excel\\ExcelServiceProvider"
-            ],
-            "aliases": {
-                "Excel": "Maatwebsite\\Excel\\Facades\\Excel"
-            }
-        }
-    }
+  }
 }

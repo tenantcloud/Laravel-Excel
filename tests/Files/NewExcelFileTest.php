@@ -11,7 +11,7 @@ class NewExcelFileTest extends TestCase {
     public function testInit()
     {
         $exporter = app('TestExport');
-        $this->assertInstanceOf(\Maatwebsite\Excel\Files\NewExcelFile::class, $exporter);
+        $this->assertInstanceOf(\TenantCloud\Excel\Files\NewExcelFile::class, $exporter);
     }
 
 
@@ -26,7 +26,7 @@ class NewExcelFileTest extends TestCase {
     {
         $exporter = app('TestExport');
         $exporter->createNewFile();
-        $this->assertInstanceOf(\Maatwebsite\Excel\Writers\LaravelExcelWriter::class, $exporter->getFileInstance());
+        $this->assertInstanceOf(\TenantCloud\Excel\Writers\LaravelExcelWriter::class, $exporter->getFileInstance());
     }
 
 

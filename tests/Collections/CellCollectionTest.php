@@ -1,6 +1,6 @@
 <?php
 
-use Maatwebsite\Excel\Collections\CellCollection;
+use TenantCloud\Excel\Collections\CellCollection;
 
 class CellCollectionTest extends TestCase {
 

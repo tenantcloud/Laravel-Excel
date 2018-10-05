@@ -1,6 +1,6 @@
 <?php
 
-use Maatwebsite\Excel\ExcelServiceProvider;
+use TenantCloud\Excel\ExcelServiceProvider;
 use Mockery as m;
 
 class TestServiceProvider extends TestCase

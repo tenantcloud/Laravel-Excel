@@ -37,7 +37,7 @@ class CustomValuBinderTest extends TestCase {
     public function testDefaultGet()
     {
         $got = $this->loadedFile->get();
-        $this->assertInstanceOf(\Maatwebsite\Excel\Collections\RowCollection::class, $got);
+        $this->assertInstanceOf(\TenantCloud\Excel\Collections\RowCollection::class, $got);
         $this->assertCount(5, $got);
     }
 

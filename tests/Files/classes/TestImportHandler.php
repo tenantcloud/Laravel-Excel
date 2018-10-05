@@ -1,6 +1,6 @@
 <?php
 
-use Maatwebsite\Excel\Files\ImportHandler;
+use TenantCloud\Excel\Files\ImportHandler;
 
 class TestImportHandler implements ImportHandler {
 
