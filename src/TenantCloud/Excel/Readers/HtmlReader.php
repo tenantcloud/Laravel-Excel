@@ -274,6 +274,10 @@ class Html extends PHPExcel_Reader_HTML {
             {
                 $attributeArray = [];
 
+				if ($child->nodeName == 'td') {
+					$this->offsetMergedCells($sheet, $column, $row);
+				}
+
                 // Set row (=parent) styles
                 if ( isset($this->styles[$row]) )
                     $this->parseInlineStyles($sheet, $column, $row, $this->styles[$row]);
@@ -611,10 +615,7 @@ class Html extends PHPExcel_Reader_HTML {
                         $this->flushCell($sheet, $column, $row, $cellContent);
 
                         // If we have a colspan, count the right amount of columns, else just 1
-                        for ($w = 0; $w < $this->spanWidth; $w++)
-                        {
-                            ++$column;
-                        }
+                        ++$column;
 
                         // reset the span width after the process
                         $this->spanWidth = 1;
@@ -1373,4 +1374,21 @@ class Html extends PHPExcel_Reader_HTML {
 
         return [$column, $cellContent];
     }
+
+	/**
+	 * @param $sheet
+	 * @param $column
+	 * @param $row
+	 */
+	protected function offsetMergedCells($sheet, &$column, $row)
+	{
+		foreach ($sheet->getMergeCells() as $cells) {
+			$cell = $sheet->getCell($column . $row);
+			if ($cell->isInRange($cells)) {
+				++$column;
+				$this->offsetMergedCells($sheet, $column, $row);
+				return;
+			}
+		}
+	}
 }
