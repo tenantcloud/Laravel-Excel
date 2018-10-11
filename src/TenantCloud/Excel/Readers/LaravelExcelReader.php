@@ -1356,7 +1356,7 @@ class LaravelExcelReader
     protected function initNewWriterWhenNeeded()
     {
         if (!$this->writer) {
-            $this->writer = app('excel.writer');
+            $this->writer = app('old_excel.writer');
             $this->writer->injectExcel($this->excel, false);
             $this->writer->setFileName($this->getFileName());
             $this->writer->setTitle($this->getTitle());

@@ -44,7 +44,7 @@ class ExcelServiceProvider extends ServiceProvider {
     public function boot()
     {
         if ($this->app instanceof LumenApplication) {
-            $this->app->configure('excel');
+            $this->app->configure('old_excel');
         } else {
             $this->publishes([
                 __DIR__ . '/../../config/old_excel.php' => config_path('old_excel.php'),
@@ -120,7 +120,7 @@ class ExcelServiceProvider extends ServiceProvider {
     protected function bindCssParser()
     {
         // Bind css parser
-        $this->app->singleton('excel.parsers.css', function ()
+        $this->app->singleton('old_excel.parsers.css', function ()
         {
             return new CssParser(
                 new CssToInlineStyles()
@@ -135,20 +135,20 @@ class ExcelServiceProvider extends ServiceProvider {
     protected function bindReaders()
     {
         // Bind the laravel excel reader
-        $this->app->singleton('excel.reader', function ($app)
+        $this->app->singleton('old_excel.reader', function ($app)
         {
             return new LaravelExcelReader(
                 $app['files'],
-                $app['excel.identifier'],
+                $app['old_excel.identifier'],
                 $app['Illuminate\Contracts\Bus\Dispatcher']
             );
         });
 
         // Bind the html reader class
-        $this->app->singleton('excel.readers.html', function ($app)
+        $this->app->singleton('old_excel.readers.html', function ($app)
         {
             return new Html(
-                $app['excel.parsers.css']
+                $app['old_excel.parsers.css']
             );
         });
     }
@@ -160,10 +160,10 @@ class ExcelServiceProvider extends ServiceProvider {
     protected function bindParsers()
     {
         // Bind the view parser
-        $this->app->singleton('excel.parsers.view', function ($app)
+        $this->app->singleton('old_excel.parsers.view', function ($app)
         {
             return new ViewParser(
-                $app['excel.readers.html']
+                $app['old_excel.readers.html']
             );
         });
     }
@@ -175,12 +175,12 @@ class ExcelServiceProvider extends ServiceProvider {
     protected function bindWriters()
     {
         // Bind the excel writer
-        $this->app->singleton('excel.writer', function ($app)
+        $this->app->singleton('old_excel.writer', function ($app)
         {
             return new LaravelExcelWriter(
                 $app->make(Response::class),
                 $app['files'],
-                $app['excel.identifier']
+                $app['old_excel.identifier']
             );
         });
     }
@@ -192,21 +192,21 @@ class ExcelServiceProvider extends ServiceProvider {
     protected function bindExcel()
     {
         // Bind the Excel class and inject its dependencies
-        $this->app->singleton('excel', function ($app)
+        $this->app->singleton('old_excel', function ($app)
         {
             $excel = new Excel(
                 $app['phpexcel'],
-                $app['excel.reader'],
-                $app['excel.writer'],
-                $app['excel.parsers.view']
+                $app['old_excel.reader'],
+                $app['old_excel.writer'],
+                $app['old_excel.parsers.view']
             );
 
-            $excel->registerFilters($app['config']->get('excel.filters', array()));
+            $excel->registerFilters($app['config']->get('old_excel.filters', array()));
 
             return $excel;
         });
 
-        $this->app->alias('excel', Excel::class);
+        $this->app->alias('old_excel', Excel::class);
     }
 
     /**
@@ -216,7 +216,7 @@ class ExcelServiceProvider extends ServiceProvider {
     protected function bindClasses()
     {
         // Bind the format identifier
-        $this->app->singleton('excel.identifier', function ($app)
+        $this->app->singleton('old_excel.identifier', function ($app)
         {
             return new FormatIdentifier($app['files']);
         });
@@ -257,12 +257,12 @@ class ExcelServiceProvider extends ServiceProvider {
     public function provides()
     {
         return [
-            'excel',
+            'old_excel',
             'phpexcel',
-            'excel.reader',
-            'excel.readers.html',
-            'excel.parsers.view',
-            'excel.writer'
+            'old_excel.reader',
+            'old_excel.readers.html',
+            'old_excel.parsers.view',
+            'old_excel.writer'
         ];
     }
 }

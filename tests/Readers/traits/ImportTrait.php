@@ -28,7 +28,7 @@ trait ImportTrait {
         $this->excel    = App::make('phpexcel');
 
         // Set writer class
-        $this->reader   = App::make('excel.reader');
+        $this->reader   = App::make('old_excel.reader');
         $this->reader->injectExcel($this->excel);
 
         // Disable heading usage

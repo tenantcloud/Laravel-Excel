@@ -49,7 +49,7 @@ class ConfigReader {
      * @param string   $config
      * @param callback $callback
      */
-    public function __construct(PHPExcel $excel, $config = 'excel.import', $callback = null)
+    public function __construct(PHPExcel $excel, $config = 'old_excel.import', $callback = null)
     {
         // Set excel object
         $this->excel = $excel;

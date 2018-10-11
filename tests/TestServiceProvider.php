@@ -24,11 +24,11 @@ class TestServiceProvider extends TestCase
 
         $this->assertCount(6, $provider->provides());
 
-        $this->assertContains('excel', $provider->provides());
+        $this->assertContains('old_excel', $provider->provides());
         $this->assertContains('phpexcel', $provider->provides());
-        $this->assertContains('excel.reader', $provider->provides());
-        $this->assertContains('excel.readers.html', $provider->provides());
-        $this->assertContains('excel.parsers.view', $provider->provides());
-        $this->assertContains('excel.writer', $provider->provides());
+        $this->assertContains('old_excel.reader', $provider->provides());
+        $this->assertContains('old_excel.readers.html', $provider->provides());
+        $this->assertContains('old_excel.parsers.view', $provider->provides());
+        $this->assertContains('old_excel.writer', $provider->provides());
     }
 }

@@ -7,7 +7,7 @@ class RegisterFilterTestCase extends TestCase {
     public function setUp()
     {
         parent::setUp();
-        $this->excel = app('excel');
+        $this->excel = app('old_excel');
     }
 
     public function testRegisterThroughConfig()

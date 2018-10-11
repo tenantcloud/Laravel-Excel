@@ -33,7 +33,7 @@ class Cache {
      * The name of the config file
      * @var string
      */
-    private $configName = 'excel.cache';
+    private $configName = 'old_excel.cache';
 
     /**
      * Cache constructor

@@ -15,7 +15,7 @@ class ExcelWriterTest extends TestCase {
         $this->excel = App::make('phpexcel');
 
         // Set writer class
-        $this->writer = App::make('excel.writer');
+        $this->writer = App::make('old_excel.writer');
         $this->writer->injectExcel($this->excel);
     }
 

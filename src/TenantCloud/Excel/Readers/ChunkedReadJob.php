@@ -89,7 +89,7 @@ class ChunkedReadJob implements ShouldQueue
      */
     public function handle()
     {
-        $reader = app('excel.reader');
+        $reader = app('old_excel.reader');
         $reader->injectExcel(app('phpexcel'));
         $reader->_init($this->file);
 

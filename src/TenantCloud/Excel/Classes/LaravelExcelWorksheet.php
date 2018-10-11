@@ -394,7 +394,7 @@ class LaravelExcelWorksheet extends PHPExcel_Worksheet {
      */
     public function setParser($parser = false)
     {
-        return $this->parser = $parser ? $parser : app('excel.parsers.view');
+        return $this->parser = $parser ? $parser : app('old_excel.parsers.view');
     }
 
     /**

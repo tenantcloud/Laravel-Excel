@@ -500,7 +500,7 @@ class LaravelExcelWriter {
     {
         // Init the parser
         if (!$this->parser)
-            $this->parser = app('excel.parsers.view');
+            $this->parser = app('old_excel.parsers.view');
 
         return $this->parser;
     }
